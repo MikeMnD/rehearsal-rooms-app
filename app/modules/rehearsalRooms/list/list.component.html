@@ -1,0 +1,11 @@
+<ActionBar title="Репетиционни">
+  <!-- actionbar items  -->
+</ActionBar>
+
+<GridLayout rows="*">
+    <ListView [items]="rehearsalRooms">
+        <template let-item="item">
+            <Button [text]="item.Name" (tap)="goToDetails(item)" class="btn btn-primary"></Button>
+        </template>
+    </ListView>
+</GridLayout>

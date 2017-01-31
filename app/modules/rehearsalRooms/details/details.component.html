@@ -1,0 +1,14 @@
+<ActionBar [title]="selectedRehearsalRoom?.Name" class="action-bar">
+</ActionBar>
+<GridLayout columns="80, *, auto" rows="30, 30, auto, *" className="longLabel">
+    <Label text="Телефон: " row="0" col="0"></Label>
+    <Label text="{{ selectedRehearsalRoom?.PhoneNumber}}" row="0" col="1" (tap)="call(selectedRehearsalRoom?.PhoneNumber)"></Label>
+
+    <Label text="Работно време: " row="1" col="0"></Label>
+    <Label text="{{ toTimeString(selectedRehearsalRoom?.OpensAt) }} - {{ toTimeString(selectedRehearsalRoom?.ClosesAt) }}" row="1" col="1"></Label>
+
+    <Label text="Адрес: " row="2" col="0"></Label>
+    <Label text="{{ selectedRehearsalRoom?.AddressText }}" textWrap="True" row="2" col="1"></Label>
+
+    <Label [text]="selectedRehearsalRoom?.Description" textWrap="True" row="3" colSpan="2" col="0"></Label>
+</GridLayout>
