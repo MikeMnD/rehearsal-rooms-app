@@ -14,16 +14,22 @@ import * as TNSPhone from 'nativescript-phone';
 export class DetailsComponent { 
     public id: string;
     public selectedRehearsalRoom: Observable < any >;
-    
+    public parsedPhoneNumbers: string[];
+
     public constructor(private route: ActivatedRoute, private rehearsalRoomsSrv: RehearsalRoomsService) {                
         this.route.params.subscribe((params) => {
             this.id = params["id"];
             this.rehearsalRoomsSrv.getById(this.id)
                 .then(
                 (data) => { 
-                    this.selectedRehearsalRoom = data;                    
+                    this.selectedRehearsalRoom = data;
+                    this.parsePhoneNumbers(data);
                 });                
         });
+    }
+
+    private parsePhoneNumbers(data) {
+        this.parsedPhoneNumbers = data.PhoneNumber.split(",");        
     }
 
     public toTimeString(dateTime: Date): string {
@@ -35,7 +41,11 @@ export class DetailsComponent {
         }
     }
 
-    public call(phoneNumber: string) {
+    public onItemTap(args) {
+        this.call(this.parsedPhoneNumbers[args.index]);
+    }
+
+    private call(phoneNumber: string) {
         TNSPhone.dial(phoneNumber, true);
     }
 }
