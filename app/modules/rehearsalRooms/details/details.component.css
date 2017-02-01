@@ -1,0 +1,36 @@
+.bordered {
+    border: 1;
+    border-radius: 5;
+    border-color: #000000;
+
+    margin-top: 10;
+    margin-left: 10;
+    margin-bottom: 5;
+    margin-right: 5;
+
+    padding: 5;   
+}
+
+gridlayout {
+    background-color: white;
+    background-image: none;
+
+    border-width: 1;
+    border-color: black;
+    border-radius: 10; 
+
+    margin-top: 30;
+    margin-left: 30;
+    margin-right:30;
+    margin-bottom: 30;
+} 
+
+.btn-call {
+    background-color: transparent;
+    margin-top: 0;
+}
+
+.call-icon {
+    font-family: 'icomoon';
+    content: "home";
+}

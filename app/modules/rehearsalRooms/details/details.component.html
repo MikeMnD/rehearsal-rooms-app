@@ -1,9 +1,10 @@
 <ActionBar [title]="selectedRehearsalRoom?.Name" class="action-bar">
+    <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" (tap)="onNavBtnTap()"></NavigationButton>
 </ActionBar>
-<GridLayout columns="80, *, auto" rows="40, 40, auto, *" className="longLabel">
+<GridLayout columns="80, *, auto" rows="40, 40, auto, auto" className="bordered">
     <Label text="Телефон: " row="0" col="0"></Label>
     <StackLayout row="0" col="1" orientation="horizontal">
-        <Button *ngFor="let item of parsedPhoneNumbers" [text]="item" (tap)="call(item)"></Button>
+        <Button *ngFor="let item of parsedPhoneNumbers" [text]="item" (tap)="call(item)" class="btn-call call-icon"></Button>
     </StackLayout>
     <Label text="Работно време: " row="1" col="0"></Label>
     <Label text="{{ toTimeString(selectedRehearsalRoom?.OpensAt) }} - {{ toTimeString(selectedRehearsalRoom?.ClosesAt) }}" row="1" col="1"></Label>

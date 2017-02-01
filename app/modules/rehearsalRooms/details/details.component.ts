@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import {Router} from "@angular/router";
 import { RehearsalRoomsService } from "../../shared/rehearsalRooms.service";
 import { Observable } from "rxjs/Observable";
 import * as TNSPhone from 'nativescript-phone';
@@ -16,7 +17,7 @@ export class DetailsComponent {
     public selectedRehearsalRoom: Observable < any >;
     public parsedPhoneNumbers: string[];
 
-    public constructor(private route: ActivatedRoute, private rehearsalRoomsSrv: RehearsalRoomsService) {                
+    public constructor(private router: Router, private route: ActivatedRoute, private rehearsalRoomsSrv: RehearsalRoomsService) {                
         this.route.params.subscribe((params) => {
             this.id = params["id"];
             this.rehearsalRoomsSrv.getById(this.id)
@@ -43,6 +44,10 @@ export class DetailsComponent {
 
     public onItemTap(args) {
         this.call(this.parsedPhoneNumbers[args.index]);
+    }
+
+    onNavBtnTap() {
+        this.router.navigate(["rehearsalRoom/List"]);
     }
 
     private call(phoneNumber: string) {
