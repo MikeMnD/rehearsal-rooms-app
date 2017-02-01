@@ -30,7 +30,8 @@ gridlayout {
     margin-top: 0;
 }
 
-.call-icon {
+.call-icon{
+    margin-left:10;
     font-family: 'icomoon';
-    content: "home";
+    content: "phone";
 }

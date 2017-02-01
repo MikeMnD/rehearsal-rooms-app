@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import { RehearsalRoomsService } from "../../shared/rehearsalRooms.service";
 import { Observable } from "rxjs/Observable";
 import * as TNSPhone from 'nativescript-phone';
+import dialogs = require("ui/dialogs");
 
 @Component({
   moduleId: module.id,  
@@ -15,22 +16,30 @@ import * as TNSPhone from 'nativescript-phone';
 export class DetailsComponent { 
     public id: string;
     public selectedRehearsalRoom: Observable < any >;
-    public parsedPhoneNumbers: string[];
+    public parsedPhoneNumbers: string[] = [];
+    private isInitialized: boolean = false;
 
     public constructor(private router: Router, private route: ActivatedRoute, private rehearsalRoomsSrv: RehearsalRoomsService) {                
         this.route.params.subscribe((params) => {
             this.id = params["id"];
-            this.rehearsalRoomsSrv.getById(this.id)
-                .then(
-                (data) => { 
-                    this.selectedRehearsalRoom = data;
-                    this.parsePhoneNumbers(data);
-                });                
+            if (!this.isInitialized) {
+                this.rehearsalRoomsSrv.getById(this.id)
+                    .then(
+                    (data) => {                    
+                        this.selectedRehearsalRoom = data;
+                        this.parsePhoneNumbers(data);   
+                        this.isInitialized = true;                 
+                    });                
+            }
         });
     }
 
     private parsePhoneNumbers(data) {
-        this.parsedPhoneNumbers = data.PhoneNumber.split(",");        
+        data.PhoneNumber.split(",")
+                            .forEach(phone => {
+                                this.parsedPhoneNumbers.push(phone.trim());
+                            })
+
     }
 
     public toTimeString(dateTime: Date): string {
@@ -52,5 +61,10 @@ export class DetailsComponent {
 
     private call(phoneNumber: string) {
         TNSPhone.dial(phoneNumber, true);
+    }
+
+    goToMap() {        
+        console.log("test");
+        this.router.navigate(["rehearsalRoomMap"]);
     }
 }

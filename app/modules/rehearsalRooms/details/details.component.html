@@ -4,13 +4,15 @@
 <GridLayout columns="80, *, auto" rows="40, 40, auto, auto" className="bordered">
     <Label text="Телефон: " row="0" col="0"></Label>
     <StackLayout row="0" col="1" orientation="horizontal">
-        <Button *ngFor="let item of parsedPhoneNumbers" [text]="item" (tap)="call(item)" class="btn-call call-icon"></Button>
+        <StackLayout *ngFor="let item of parsedPhoneNumbers" orientation="horizontal">
+            <Label text="phone {{item}}" (tap)="call(item)" class="call-icon"></Label>
+        </StackLayout>
     </StackLayout>
     <Label text="Работно време: " row="1" col="0"></Label>
     <Label text="{{ toTimeString(selectedRehearsalRoom?.OpensAt) }} - {{ toTimeString(selectedRehearsalRoom?.ClosesAt) }}" row="1" col="1"></Label>
  
     <Label text="Адрес: " row="2" col="0"></Label>
-    <Label text="{{ selectedRehearsalRoom?.AddressText }}" textWrap="True" row="2" col="1"></Label>
+    <Label text="{{ selectedRehearsalRoom?.AddressText }}" textWrap="True" row="2" col="1" (tap)="goToMap()"></Label>
 
     <Label [text]="selectedRehearsalRoom?.Description" textWrap="True" row="3" colSpan="2" col="0"></Label>
 </GridLayout>

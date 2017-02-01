@@ -4,7 +4,7 @@ import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 import { ListModule } from "./modules/rehearsalRooms/list/list.module";
 import { DetailsModule } from "./modules/rehearsalRooms/details/details.module";
-
+import { MapModule } from "./modules/rehearsalRooms/map/map.module";
 import { appRoutes } from "./app.routes";
 import { AppComponent } from "./app.component";
 
@@ -16,7 +16,8 @@ import { AppComponent } from "./app.component";
         NativeScriptRouterModule,    
         NativeScriptRouterModule.forRoot(appRoutes),
         ListModule,
-        DetailsModule
+        DetailsModule,
+        MapModule,
     ],
     schemas: [NO_ERRORS_SCHEMA]
 })
