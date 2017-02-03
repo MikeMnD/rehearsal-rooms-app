@@ -8,6 +8,11 @@ import { MapModule } from "./modules/rehearsalRooms/map/map.module";
 import { appRoutes } from "./app.routes";
 import { AppComponent } from "./app.component";
 
+import { registerElement } from "nativescript-angular/element-registry";
+
+const mapbox = require("nativescript-mapbox");
+registerElement("Mapbox", () => mapbox.Mapbox);
+
 @NgModule({    
     declarations: [AppComponent],
     bootstrap: [AppComponent],
