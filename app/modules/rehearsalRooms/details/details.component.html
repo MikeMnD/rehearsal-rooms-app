@@ -1,9 +1,10 @@
 <ActionBar [title]="selectedRehearsalRoom?.Name" class="action-bar">
     <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" (tap)="onNavBtnTap()"></NavigationButton>
 </ActionBar>
-<GridLayout columns="80, *, auto" rows="40, 40, auto, auto" className="bordered">
-    <Label text="Телефон: " row="0" col="0"></Label>
-    <StackLayout row="0" col="1" orientation="horizontal">
+
+<GridLayout columns="200, *, auto" rows="40, 40, auto, auto" className="bordered">
+    
+    <StackLayout row="0" col="0" colSpan="2" orientation="horizontal">
         <StackLayout *ngFor="let item of parsedPhoneNumbers" orientation="horizontal">
             <Label text="phone {{item}}" (tap)="call(item)" class="call-icon"></Label>
         </StackLayout>
@@ -11,8 +12,25 @@
     <Label text="Работно време: " row="1" col="0"></Label>
     <Label text="{{ toTimeString(selectedRehearsalRoom?.OpensAt) }} - {{ toTimeString(selectedRehearsalRoom?.ClosesAt) }}" row="1" col="1"></Label>
  
-    <Label text="Адрес: " row="2" col="0"></Label>
-    <Label text="{{ selectedRehearsalRoom?.AddressText }}" textWrap="True" row="2" col="1" (tap)="goToMap()"></Label>
+    <Label text="{{ selectedRehearsalRoom?.AddressText }}" textWrap="True" row="2" col="0" (tap)="goToMap()"></Label>
+    <ContentView row="2" col="1" width="150" height="150" (tap)="goToMap()"> 
+        <Mapbox
+            accessToken="pk.eyJ1IjoiZXRhYmFrb3YiLCJhIjoiY2l5bzZ3Z2huMDAyMDMzcGR3YWZhdHNzayJ9.oV-13mVInUUzwSrROzVglQ"
+            mapStyle="light"
+            latitude="{{ latitude}}"
+            longitude="{{ longitude}}"
+            zoomLevel="13"
+            showUserLocation="true"
+            hideCompass="true"
+            hideLogo="true"
+            disableRotation="true"
+            disableTilt="true"
+            disableZoom="true"
+            delay="500"
+            (mapReady)="onMapReady($event)"
+        ></Mapbox> 
+    </ContentView>
+    
 
     <Label [text]="selectedRehearsalRoom?.Description" textWrap="True" row="3" colSpan="2" col="0"></Label>
 </GridLayout>

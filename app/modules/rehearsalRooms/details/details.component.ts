@@ -18,6 +18,10 @@ export class DetailsComponent {
     public selectedRehearsalRoom: Observable < any >;
     public parsedPhoneNumbers: string[] = [];
     private isInitialized: boolean = false;
+    
+    private latitude: number;
+    private longitude: number;
+    private title: string;
 
     public constructor(private router: Router, private route: ActivatedRoute, private rehearsalRoomsSrv: RehearsalRoomsService) {                
         this.route.params.subscribe((params) => {
@@ -28,6 +32,11 @@ export class DetailsComponent {
                     (data) => {                    
                         this.selectedRehearsalRoom = data;
                         this.parsePhoneNumbers(data);   
+
+                        this.latitude = data.Address.latitude;
+                        this.longitude = data.Address.longitude;
+                        this.title = data.Name;
+                        
                         this.isInitialized = true;                 
                     });                
             }
@@ -58,6 +67,17 @@ export class DetailsComponent {
 
     onNavBtnTap() {
         this.router.navigate(["rehearsalRoom/List"]);
+    }
+
+    onMapReady(args) {
+        args.map.addMarkers([
+          {
+            id: 1,
+            lat: this.latitude,
+            lng: this.longitude,  
+            title: this.title,          
+          }
+        ]);
     }
 
     private call(phoneNumber: string) {
