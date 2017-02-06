@@ -5,7 +5,7 @@ import { MapComponent } from "./map.component";
 
 const mapRoutes: Routes = [
   {
-    path: 'rehearsalRoomMap',
+    path: 'rehearsalRoomMap/:id',
     component: MapComponent
   }
 ];

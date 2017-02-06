@@ -35,11 +35,11 @@ export class RehearsalRoomsService {
     getById(rehearsalRoomId): Promise < any > {
         var filter = new Everlive.Query();
         filter.where().eq("Id", rehearsalRoomId);
-        filter.take(1);
+        filter.take(1);        
 
         let promise: Promise<any> = new Promise(
             (resolve, reject) => {
-                this._data
+                this._data                    
                     .get(filter)
                     .then(data => resolve(data.result[0] || []))
                     .catch(error => reject(error));

@@ -10,7 +10,7 @@ export const appRoutes: Routes = [
     pathMatch: "full"
   },  
   {
-      path: "rehearsalRoomMap",
+      path: "rehearsalRoomMap/:id",
       component: MapComponent,
   },
   {

@@ -35,11 +35,12 @@ export class DetailsComponent {
     }
 
     private parsePhoneNumbers(data) {
+        if (data != null) {
         data.PhoneNumber.split(",")
                             .forEach(phone => {
                                 this.parsedPhoneNumbers.push(phone.trim());
                             })
-
+        };
     }
 
     public toTimeString(dateTime: Date): string {
@@ -63,8 +64,7 @@ export class DetailsComponent {
         TNSPhone.dial(phoneNumber, true);
     }
 
-    goToMap() {        
-        console.log("test");
-        this.router.navigate(["rehearsalRoomMap"]);
+    goToMap() {                
+        this.router.navigate(["rehearsalRoomMap", this.id]);
     }
 }
