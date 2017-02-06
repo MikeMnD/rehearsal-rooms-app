@@ -13,6 +13,9 @@ export class MapAllComponent {
   }
       
   onNavBtnTap() {
-        this.router.navigate(["rehearsalRoom/List"]);
-    }
+      this.router.navigate(["rehearsalRoom/List"]);
+  }
+
+  onMapReady(args) {        
+  }
 }
