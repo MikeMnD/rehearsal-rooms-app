@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import {Router, ActivatedRoute } from "@angular/router";
 import {RehearsalRoomsService} from "../../shared/rehearsalRooms.service";
 
 @Component({
@@ -16,7 +16,7 @@ export class MapComponent {
     private longitude: number;
     private title: string; 
 
-    public constructor(private route: ActivatedRoute, private rehearsalRoomsSrv: RehearsalRoomsService) {
+    public constructor(private router: Router, private route: ActivatedRoute, private rehearsalRoomsSrv: RehearsalRoomsService) {
         this.route.params.subscribe((params) => {
             this.id = params["id"];
               this.rehearsalRoomsSrv.getById(this.id)
@@ -39,5 +39,9 @@ export class MapComponent {
             title: this.title,          
           }
         ]);
+    }
+    
+    onNavBtnTap() {
+        this.router.navigate(["rehearsalRoom", this.id]);
     }
 }
