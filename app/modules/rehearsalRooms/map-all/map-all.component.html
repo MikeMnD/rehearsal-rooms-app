@@ -1,0 +1,17 @@
+<ActionBar title="Карта">
+  <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" (tap)="onNavBtnTap()"></NavigationButton>
+</ActionBar>
+<StackLayout>
+<Mapbox
+    accessToken="pk.eyJ1IjoiZXRhYmFrb3YiLCJhIjoiY2l5bzZ3Z2huMDAyMDMzcGR3YWZhdHNzayJ9.oV-13mVInUUzwSrROzVglQ"
+    mapStyle="light"
+    latitude="42.6958942"
+    longitude="23.3133232"
+    zoomLevel="12"
+    showUserLocation="true"
+    hideCompass="true"
+    hideLogo="true"
+    disableRotation="true"
+    disableTilt="true"
+    delay="500"></Mapbox> 
+</StackLayout>

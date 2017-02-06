@@ -26,8 +26,7 @@ export class MapComponent {
                       this.longitude = data.Address.longitude;
                       this.title = data.Name;                         
                   });                           
-        });
-        console.log("event called");
+        });        
     }
 
     onMapReady(args) {

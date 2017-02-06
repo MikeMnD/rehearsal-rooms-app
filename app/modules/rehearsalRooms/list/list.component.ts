@@ -25,4 +25,8 @@ export class ListComponent {
     goToDetails(item) {
         this.router.navigate(["/rehearsalRoom", item.Id]);
     }
+
+    onNavMapTap() {
+        this.router.navigate(["/rehearsalRoomMapAll"]);
+    }
 }
