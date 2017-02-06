@@ -13,6 +13,6 @@ export class MapAllComponent {
   }
       
   onNavBtnTap() {
-        this.router.navigate(["rehearsalRoom/list"]);
+        this.router.navigate(["rehearsalRoom/List"]);
     }
 }
