@@ -1,11 +1,11 @@
 {
-  "ProjectName": "Rehearsal Room Catalog",
-  "ProjectGuid": "87cbbc96-222b-401c-a654-1297f87affb7",
+  "ProjectName": "rehearsal-rooms-app",
+  "ProjectGuid": "{46e741de-6d80-4eaf-a014-a228f40c3f50}",
   "projectVersion": 1,
-  "AppIdentifier": "com.telerik.RehearsalRoomCatalog",
-  "DisplayName": "Rehearsal Room Catalog",
+  "AppIdentifier": "com.telerik.rehearsalroomsapp",
+  "DisplayName": "rehearsal-rooms-app",
   "Author": "",
-  "Description": "Rehearsal Room Catalog",
+  "Description": "rehearsal-rooms-app",
   "BundleVersion": "1.0",
   "AndroidVersionCode": "1",
   "iOSDeviceFamily": [
@@ -15,7 +15,7 @@
   "iOSBackgroundMode": [],
   "ProjectTypeGuids": "{F0A65104-D4F4-4012-B799-F612D75820F6}",
   "AndroidPermissions": [
-    "android.permission.INTERNET"    
+    "android.permission.INTERNET"
   ],
   "DeviceOrientations": [
     "Portrait",
