@@ -4,16 +4,16 @@
 
 <StackLayout>
     
-    <FlexboxLayout className="details-box" justifyContent="space-between">        
+    <FlexboxLayout className="details-box" justifyContent="space-between" *ngIf="selectedRehearsalRoom?.PhoneNumber">        
             <Label *ngFor="let item of parsedPhoneNumbers" text="phone {{item}}" (tap)="call(item)" class="call-icon"></Label>        
     </FlexboxLayout>
 
-    <StackLayout class="details-box" orientation="horizontal">
+    <StackLayout class="details-box" orientation="horizontal" *ngIf="selectedRehearsalRoom?.OpensAt || selectedRehearsalRoom?.ClosesAt">
         <Label text="office" class="pin-icon"></Label>        
         <Label text="Работно време: {{ toTimeString(selectedRehearsalRoom?.OpensAt) }} - {{ toTimeString(selectedRehearsalRoom?.ClosesAt) }}" style="margin-left: 20"></Label>
     </StackLayout>
 
-    <StackLayout class="details-box" orientation="horizontal" (tap)="goToUrl()">
+    <StackLayout class="details-box" orientation="horizontal" (tap)="goToUrl()" *ngIf="selectedRehearsalRoom?.WebsiteUrl">
         <Label text="sphere" class="pin-icon"></Label>
         <Label text="{{ selectedRehearsalRoom?.WebsiteUrl}}" style="margin-left: 20"></Label>
     </StackLayout>
@@ -41,7 +41,7 @@
                 (mapReady)="onMapReady($event)"></Mapbox> 
         </ContentView>
     </StackLayout>
-    <FlexboxLayout class="details-box">
+    <FlexboxLayout class="details-box" *ngIf="selectedRehearsalRoom?.Description">
         <Label [text]="selectedRehearsalRoom?.Description" textWrap="True"></Label>
     </FlexboxLayout>
 </StackLayout>
