@@ -3,9 +3,9 @@
   "ProjectGuid": "{46e741de-6d80-4eaf-a014-a228f40c3f50}",
   "projectVersion": 1,
   "AppIdentifier": "com.telerik.rehearsalroomsapp",
-  "DisplayName": "rehearsal-rooms-app",
-  "Author": "",
-  "Description": "rehearsal-rooms-app",
+  "DisplayName": "БГ Репетиционни",
+  "Author": "Emil Tabakov",
+  "Description": "Каталог на всички репетиционни стаи в София.",
   "BundleVersion": "1.0",
   "AndroidVersionCode": "1",
   "iOSDeviceFamily": [

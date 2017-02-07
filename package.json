@@ -1,5 +1,6 @@
 {
-  "description": "NativeScript Application",
+  "name": "БГ Репетиционни",
+  "description": "Каталог на всички репетиционни стаи в София.",
   "license": "SEE LICENSE IN <your-license-filename>",
   "readme": "NativeScript Application",
   "repository": "<fill-your-repository-here>",
