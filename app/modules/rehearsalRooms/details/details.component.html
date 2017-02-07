@@ -4,18 +4,24 @@
 
 <StackLayout>
     
-    <FlexboxLayout orientation="horizontal" className="details-box" justifyContent="space-between">        
+    <FlexboxLayout className="details-box" justifyContent="space-between">        
             <Label *ngFor="let item of parsedPhoneNumbers" text="phone {{item}}" (tap)="call(item)" class="call-icon"></Label>        
     </FlexboxLayout>
 
-    <StackLayout class="details-box">
-        <Label text="Работно време: "></Label>
-        <Label text="{{ toTimeString(selectedRehearsalRoom?.OpensAt) }} - {{ toTimeString(selectedRehearsalRoom?.ClosesAt) }}"></Label>
-    </StackLayout>
+    <FlexboxLayout class="details-box"  justifyContent="space-around" alignItems="center">
+        <Label text="office" class="pin-icon"></Label>
+        <StackLayout>
+            <Label text="Работно време"></Label>
+            <Label text="{{ toTimeString(selectedRehearsalRoom?.OpensAt) }} - {{ toTimeString(selectedRehearsalRoom?.ClosesAt) }}"></Label>
+        </StackLayout>
+    </FlexboxLayout>
 
-    <StackLayout class="details-box" (tap)="goToMap()" orientation="horizontal">
-        <Label text="{{ selectedRehearsalRoom?.AddressText }}" textWrap="True" width="150" style="vertical-align: middle"></Label>
-        <ContentView width="250" height="150" > 
+    <StackLayout class="details-box" (tap)="goToMap()">
+        <StackLayout orientation="horizontal" style="margin-bottom: 10; margin-right:15">
+            <Label text="location" class="pin-icon" ></Label>
+            <Label text="{{ selectedRehearsalRoom?.AddressText }}" textWrap="True"></Label>            
+        </StackLayout>
+        <ContentView width="350" height="150" > 
             <Mapbox
                 accessToken="pk.eyJ1IjoiZXRhYmFrb3YiLCJhIjoiY2l5bzZ3Z2huMDAyMDMzcGR3YWZhdHNzayJ9.oV-13mVInUUzwSrROzVglQ"
                 mapStyle="light"
@@ -28,11 +34,12 @@
                 disableRotation="true"
                 disableTilt="true"
                 disableZoom="true"
-                delay="500"
+                disableScroll="true"
+                delay="1000"
                 (mapReady)="onMapReady($event)"></Mapbox> 
         </ContentView>
     </StackLayout>
-    <StackLayout class="details-box">
-        <Label [text]="selectedRehearsalRoom?.Description" textWrap="True" style="text-justify:newspaper"></Label>
-    </StackLayout>
+    <FlexboxLayout class="details-box">
+        <Label [text]="selectedRehearsalRoom?.Description" textWrap="True"></Label>
+    </FlexboxLayout>
 </StackLayout>

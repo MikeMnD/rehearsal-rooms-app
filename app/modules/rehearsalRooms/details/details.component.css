@@ -21,11 +21,17 @@
     margin-top: 0;
 }
 
-.call-icon{
+.call-icon {
     margin-left:10;
     font-family: 'icomoon';
     font-size: 18;
     content: "phone";
+}
+
+.pin-icon {
+    font-family:'icomoon';
+    font-size:18; 
+    vertical-align: middle;    
 }
 
 .details-box-items {
