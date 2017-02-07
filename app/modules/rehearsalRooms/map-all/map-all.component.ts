@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
+import {Observable} from "rxjs/Observable";
+import { RehearsalRoomsService } from "../../shared/rehearsalRooms.service";
 
 @Component({
   moduleId: module.id,
@@ -7,15 +9,29 @@ import {Router} from '@angular/router';
   templateUrl: `map-all.component.html`,  
 })
 export class MapAllComponent {
+    private rehearsalRooms: any[] = [];
 
-  constructor(private router: Router) {
+    constructor(private router: Router, private rehearsalRoomsSvc: RehearsalRoomsService) {
+            rehearsalRoomsSvc.getAll()
+                .subscribe(  
+                    (data) => {
+                        this.rehearsalRooms = data;
+                    });
+    }
+        
+    onNavBtnTap() {
+        this.router.navigate(["rehearsalRoom/List"]);
+    }
 
-  }
-      
-  onNavBtnTap() {
-      this.router.navigate(["rehearsalRoom/List"]);
-  }
-
-  onMapReady(args) {        
-  }
+    onMapReady(args) {
+        for (let room of this.rehearsalRooms) {
+            args.map.addMarkers([{
+                id: room.Id,
+                lat: room.Address.latitude,
+                lng: room.Address.longitude,
+                title: room.Name,
+                onCalloutTap: () => {this.router.navigate(["rehearsalRoom/", room.Id])},                
+            }])
+        }
+    }
 }
