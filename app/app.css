@@ -3,3 +3,14 @@
 page {
     background-image: ~/images/bg.png;   
 }
+
+.title-bolded {
+    font-weight: bold;  
+    font-size:20;      
+}
+
+.title {
+    font-family: 'Jura';    
+    margin-left: 15;
+    vertical-align: middle;
+}
