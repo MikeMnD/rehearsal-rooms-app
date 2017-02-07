@@ -2,8 +2,8 @@
   "name": "БГ Репетиционни",
   "description": "Каталог на всички репетиционни стаи в София.",
   "license": "SEE LICENSE IN <your-license-filename>",
-  "readme": "NativeScript Application",
-  "repository": "<fill-your-repository-here>",
+  "readme": "https://raw.githubusercontent.com/etabakov/rehearsal-rooms-app/master/README.md",
+  "repository": "https://github.com/etabakov/rehearsal-rooms-app",
   "nativescript": {
     "id": "org.nativescript.rehearsalroomsapp",
     "tns-android": {
