@@ -13,7 +13,8 @@ export class backendServicesService {
     constructor() {
         this._options = {
             appId: 'jmbf8njcu046y26w',
-            scheme: 'https'
+            scheme: 'https',
+            caching: true
         }
 
         this._everlive = new Everlive(this._options);
