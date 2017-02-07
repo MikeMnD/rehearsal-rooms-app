@@ -5,6 +5,15 @@ import { RehearsalRoomsService } from "../../shared/rehearsalRooms.service";
 import { Observable } from "rxjs/Observable";
 import * as TNSPhone from 'nativescript-phone';
 import dialogs = require("ui/dialogs");
+import {
+    FlexboxLayout,
+    FlexDirection,
+    FlexWrap,
+    JustifyContent,
+    AlignItems,
+    AlignContent,
+    AlignSelf
+} from "ui/layouts/flexbox-layout";
 
 @Component({
   moduleId: module.id,  

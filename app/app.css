@@ -1,4 +1,4 @@
-@import 'nativescript-theme-core/css/core.light.css';
+@import 'nativescript-theme-core/css/core.dark.css';
 
 page {
     background-image: ~/images/bg.png;   
