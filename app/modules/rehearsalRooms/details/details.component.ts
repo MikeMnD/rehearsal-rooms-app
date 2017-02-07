@@ -44,7 +44,7 @@ export class DetailsComponent {
     }
 
     private parsePhoneNumbers(data) {
-        if (data != null) {
+        if (data != null && data.PhoneNumber != undefined) {
         data.PhoneNumber.split(",")
                             .forEach(phone => {
                                 this.parsedPhoneNumbers.push(phone.trim());
