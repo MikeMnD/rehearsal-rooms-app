@@ -3,6 +3,15 @@ import {Router} from "@angular/router";
 import {Observable} from "rxjs/Observable";
 import { RehearsalRoomsService } from "../../shared/rehearsalRooms.service";
 import { RehearsalRoom } from "../../shared/entities/rehearsalRoom";
+import {
+    FlexboxLayout,
+    FlexDirection,
+    FlexWrap,
+    JustifyContent,
+    AlignItems,
+    AlignContent,
+    AlignSelf
+} from "ui/layouts/flexbox-layout";
 
 @Component({
   moduleId: module.id,

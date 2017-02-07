@@ -1,9 +1,11 @@
 <ActionBar title="" class="action-bar">
-    <StackLayout orientation="horizontal">
+    <FlexboxLayout justifyContent="space-between" width="350">
         <Label text="Репетиционни" class="title title-bolded"></Label>
-        <Label text="Карта" (tap)="onNavMapTap()" class="title"></Label>
-        <Label text="map2" (tap)="onNavMapTap()" class="map-button"></Label>
-    </StackLayout>
+        <StackLayout orientation="horizontal" (tap)="onNavMapTap()">
+            <Label text="Карта" class="title"></Label>
+            <Label text="map2" class="map-button"></Label>
+        </StackLayout>
+    </FlexboxLayout>
 </ActionBar>
 
 <GridLayout rows="*">
