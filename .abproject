@@ -1,0 +1,28 @@
+{
+  "ProjectName": "Rehearsal Room Catalog",
+  "ProjectGuid": "87cbbc96-222b-401c-a654-1297f87affb7",
+  "projectVersion": 1,
+  "AppIdentifier": "com.telerik.RehearsalRoomCatalog",
+  "DisplayName": "Rehearsal Room Catalog",
+  "Author": "",
+  "Description": "Rehearsal Room Catalog",
+  "BundleVersion": "1.0",
+  "AndroidVersionCode": "1",
+  "iOSDeviceFamily": [
+    "1",
+    "2"
+  ],
+  "iOSBackgroundMode": [],
+  "ProjectTypeGuids": "{F0A65104-D4F4-4012-B799-F612D75820F6}",
+  "AndroidPermissions": [
+    "android.permission.INTERNET"    
+  ],
+  "DeviceOrientations": [
+    "Portrait",
+    "Landscape"
+  ],
+  "AndroidHardwareAcceleration": "true",
+  "iOSStatusBarStyle": "Default",
+  "FrameworkVersion": "2.5.0",
+  "Framework": "NativeScript"
+}
