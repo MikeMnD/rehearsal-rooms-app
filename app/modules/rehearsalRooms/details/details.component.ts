@@ -6,6 +6,7 @@ import { RehearsalRoom } from "../../shared/entities/rehearsalRoom";
 import { Observable } from "rxjs/Observable";
 import * as TNSPhone from 'nativescript-phone';
 import dialogs = require("ui/dialogs");
+import utilityModule = require("utils/utils");
 import {
     FlexboxLayout,
     FlexDirection,
@@ -96,5 +97,9 @@ export class DetailsComponent {
 
     goToMap() {                
         this.router.navigate(["rehearsalRoomMap", this.id]);
+    }
+
+    goToUrl() {
+        utilityModule.openUrl(this.selectedRehearsalRoom.WebsiteUrl);
     }
 }

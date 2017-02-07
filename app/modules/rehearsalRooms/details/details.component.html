@@ -8,13 +8,15 @@
             <Label *ngFor="let item of parsedPhoneNumbers" text="phone {{item}}" (tap)="call(item)" class="call-icon"></Label>        
     </FlexboxLayout>
 
-    <FlexboxLayout class="details-box"  justifyContent="space-around" alignItems="center">
-        <Label text="office" class="pin-icon"></Label>
-        <StackLayout>
-            <Label text="Работно време"></Label>
-            <Label text="{{ toTimeString(selectedRehearsalRoom?.OpensAt) }} - {{ toTimeString(selectedRehearsalRoom?.ClosesAt) }}"></Label>
-        </StackLayout>
-    </FlexboxLayout>
+    <StackLayout class="details-box" orientation="horizontal">
+        <Label text="office" class="pin-icon"></Label>        
+        <Label text="Работно време: {{ toTimeString(selectedRehearsalRoom?.OpensAt) }} - {{ toTimeString(selectedRehearsalRoom?.ClosesAt) }}" style="margin-left: 20"></Label>
+    </StackLayout>
+
+    <StackLayout class="details-box" orientation="horizontal" (tap)="goToUrl()">
+        <Label text="sphere" class="pin-icon"></Label>
+        <Label text="{{ selectedRehearsalRoom?.WebsiteUrl}}" style="margin-left: 20"></Label>
+    </StackLayout>
 
     <StackLayout class="details-box" (tap)="goToMap()">
         <StackLayout orientation="horizontal" style="margin-bottom: 10; margin-right:15">

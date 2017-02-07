@@ -21,8 +21,7 @@
     margin-top: 0;
 }
 
-.call-icon {
-    margin-left:10;
+.call-icon {    
     font-family: 'icomoon';
     font-size: 18;
     content: "phone";
