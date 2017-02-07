@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 import {Observable} from "rxjs/Observable";
 import { RehearsalRoomsService } from "../../shared/rehearsalRooms.service";
+import { RehearsalRoom } from "../../shared/entities/rehearsalRoom";
 
 @Component({
   moduleId: module.id,
@@ -12,7 +13,7 @@ import { RehearsalRoomsService } from "../../shared/rehearsalRooms.service";
 
 export class ListComponent {
 
-    public rehearsalRooms: Observable<any>[] = [];
+    public rehearsalRooms: RehearsalRoom[] = [];
 
     constructor(private router: Router, private rehearsalRoomsSvc: RehearsalRoomsService) {
         rehearsalRoomsSvc.getAll()

@@ -2,6 +2,8 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 import 'rxjs/add/observable/fromPromise';
 import * as shared from "../../shared";
+import { RehearsalRoom } from "./entities/rehearsalRoom";
+
 const Everlive: any = require('../../sdks/everlive.js');
 
 @
@@ -19,8 +21,8 @@ export class RehearsalRoomsService {
         return this._provider.instance;
     }
 
-    getAll(): Observable < any > {
-        let promise: Promise < any > = new Promise(
+    getAll(): Observable < RehearsalRoom[] > {
+        let promise: Promise < RehearsalRoom[] > = new Promise(
             (resolve, reject) => {
                 this._data
                     .get()
@@ -32,7 +34,7 @@ export class RehearsalRoomsService {
         return Observable.fromPromise(promise);
     }
 
-    getById(rehearsalRoomId): Promise < any > {
+    getById(rehearsalRoomId): Promise < RehearsalRoom > {
         var filter = new Everlive.Query();
         filter.where().eq("Id", rehearsalRoomId);
         filter.take(1);        
@@ -40,8 +42,8 @@ export class RehearsalRoomsService {
         let promise: Promise<any> = new Promise(
             (resolve, reject) => {
                 this._data                    
-                    .get(filter)
-                    .then(data => resolve(data.result[0] || []))
+                    .get()
+                    .then(data => resolve(data.result.filter(r => r.Id == rehearsalRoomId)[0] || []))
                     .catch(error => reject(error));
             }
         );

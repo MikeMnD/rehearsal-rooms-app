@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import {Router} from "@angular/router";
 import { RehearsalRoomsService } from "../../shared/rehearsalRooms.service";
+import { RehearsalRoom } from "../../shared/entities/rehearsalRoom";
 import { Observable } from "rxjs/Observable";
 import * as TNSPhone from 'nativescript-phone';
 import dialogs = require("ui/dialogs");
@@ -24,7 +25,7 @@ import {
 
 export class DetailsComponent { 
     public id: string;
-    public selectedRehearsalRoom: Observable < any >;
+    public selectedRehearsalRoom: RehearsalRoom;
     public parsedPhoneNumbers: string[] = [];
     private isInitialized: boolean = false;
     
