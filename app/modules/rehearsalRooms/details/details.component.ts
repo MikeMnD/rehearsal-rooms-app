@@ -17,6 +17,8 @@ import {
     AlignSelf
 } from "ui/layouts/flexbox-layout";
 
+var Analytics = require('nativescript-telerik-analytics');
+
 @Component({
   moduleId: module.id,  
   selector: "rehearsalRooms-details",
@@ -34,7 +36,8 @@ export class DetailsComponent {
     private longitude: number;
     private title: string;
 
-    public constructor(private router: Router, private route: ActivatedRoute, private rehearsalRoomsSrv: RehearsalRoomsService) {                
+    public constructor(private router: Router, private route: ActivatedRoute, private rehearsalRoomsSrv: RehearsalRoomsService) {      
+        Analytics.trackEvent('MyCategory.MyEvent');          
         this.route.params.subscribe((params) => {
             this.id = params["id"];
             if (!this.isInitialized) {
