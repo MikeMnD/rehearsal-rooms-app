@@ -21,7 +21,7 @@
     <StackLayout class="details-box" (tap)="goToMap()">
         <StackLayout orientation="horizontal" style="margin-bottom: 10; margin-right:15">
             <Label text="location" class="pin-icon" ></Label>
-            <Label text="{{ selectedRehearsalRoom?.AddressText }}" textWrap="True"></Label>            
+            <Label text="{{ selectedRehearsalRoom?.AddressText }} [+]" textWrap="True"></Label>            
         </StackLayout>
         <ContentView width="350" height="150" > 
             <Mapbox
