@@ -12,6 +12,7 @@ import {
     AlignContent,
     AlignSelf
 } from "ui/layouts/flexbox-layout";
+var Analytics = require('nativescript-telerik-analytics');
 
 @Component({
   moduleId: module.id,
@@ -33,10 +34,12 @@ export class ListComponent {
     }
 
     goToDetails(item) {
+        Analytics.trackEvent('List.OpenDetails');
         this.router.navigate(["/rehearsalRoom", item.Id]);
     }
 
     onNavMapTap() {
+        Analytics.trackEvent('List.OpenMap');
         this.router.navigate(["/rehearsalRoomMapAll"]);
     }
 }

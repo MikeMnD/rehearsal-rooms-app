@@ -37,8 +37,7 @@ export class DetailsComponent {
     private longitude: number = 23.5828561;
     private title: string;
 
-    public constructor(private router: Router, private route: ActivatedRoute, private rehearsalRoomsSrv: RehearsalRoomsService) {
-        Analytics.trackEvent('MyCategory.MyEvent');
+    public constructor(private router: Router, private route: ActivatedRoute, private rehearsalRoomsSrv: RehearsalRoomsService) {        
         this.route.params.subscribe((params) => {
             this.id = params["id"];
             if (!this.isInitialized) {
@@ -55,9 +54,7 @@ export class DetailsComponent {
                         this.isInitialized = true;
                     });
             }
-        });
-
-        setTimeout(() => {}, 1000);
+        });        
     }
 
     private parsePhoneNumbers(data) {
@@ -79,6 +76,7 @@ export class DetailsComponent {
     }
 
     public onItemTap(args) {
+        Analytics.trackEvent('Details.CallPressed');
         this.call(this.parsedPhoneNumbers[args.index]);
     }
 
@@ -101,10 +99,12 @@ export class DetailsComponent {
     }
 
     goToMap() {
+        Analytics.trackEvent('Details.OpenMap');
         this.router.navigate(["rehearsalRoomMap", this.id]);
     }
 
     goToUrl() {
+        Analytics.trackEvent('Details.OpenUrl');
         utilityModule.openUrl(this.selectedRehearsalRoom.WebsiteUrl);
     }
 }

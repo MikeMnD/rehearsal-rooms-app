@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {Observable} from "rxjs/Observable";
 import { RehearsalRoomsService } from "../../shared/rehearsalRooms.service";
 var mapsModule = require("nativescript-google-maps-sdk");
+var Analytics = require('nativescript-telerik-analytics');
 
 @Component({
   moduleId: module.id,
@@ -38,6 +39,7 @@ export class MapAllComponent {
     }
 
     onMarkerInfoWindowTapped(args) {
+        Analytics.trackEvent('MapAll.OpenDetails');
         this.router.navigate(["rehearsalRoom/", args.marker.userData.id]);
     }
 }
