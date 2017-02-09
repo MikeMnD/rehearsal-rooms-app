@@ -1,49 +1,40 @@
 <ActionBar [title]="selectedRehearsalRoom?.Name" class="action-bar">
     <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" (tap)="onNavBtnTap()"></NavigationButton>
 </ActionBar>
+<ScrollView>
+    <StackLayout>
 
-<StackLayout>
-    
-    <FlexboxLayout className="details-box" justifyContent="space-between" *ngIf="selectedRehearsalRoom?.PhoneNumber">        
-            <Label *ngFor="let item of parsedPhoneNumbers" text="phone {{item}}" (tap)="call(item)" class="call-icon"></Label>        
-    </FlexboxLayout>
+        <FlexboxLayout className="details-box" justifyContent="space-between" *ngIf="selectedRehearsalRoom?.PhoneNumber">
+            <Label *ngFor="let item of parsedPhoneNumbers" text="phone {{item}}" (tap)="call(item)" class="call-icon"></Label>
+        </FlexboxLayout>
 
-    <StackLayout class="details-box" orientation="horizontal" *ngIf="selectedRehearsalRoom?.OpensAt || selectedRehearsalRoom?.ClosesAt">
-        <Label text="office" class="pin-icon"></Label>        
-        <Label text="Работно време: {{ toTimeString(selectedRehearsalRoom?.OpensAt) }} - {{ toTimeString(selectedRehearsalRoom?.ClosesAt) }}" style="margin-left: 20"></Label>
-    </StackLayout>
-
-    <StackLayout class="details-box" orientation="horizontal" (tap)="goToUrl()" *ngIf="selectedRehearsalRoom?.WebsiteUrl">
-        <Label text="sphere" class="pin-icon"></Label>
-        <Label text="{{ selectedRehearsalRoom?.WebsiteUrl}}" style="margin-left: 20"></Label>
-    </StackLayout>
-
-    <StackLayout class="details-box" (tap)="goToMap()">
-        <StackLayout orientation="horizontal" style="margin-bottom: 10; margin-right:15">
-            <Label text="location" class="pin-icon" ></Label>
-            <Label text="{{ selectedRehearsalRoom?.AddressText }}" textWrap="True"></Label>            
+        <StackLayout class="details-box" orientation="horizontal" *ngIf="selectedRehearsalRoom?.OpensAt || selectedRehearsalRoom?.ClosesAt">
+            <Label text="office" class="pin-icon"></Label>
+            <Label text="Работно време: {{ toTimeString(selectedRehearsalRoom?.OpensAt) }} - {{ toTimeString(selectedRehearsalRoom?.ClosesAt) }}"
+                style="margin-left: 20"></Label>
         </StackLayout>
-        <GridLayout width="350" height="150" > 
-            <Mapbox
-                accessToken="pk.eyJ1IjoiZXRhYmFrb3YiLCJhIjoiY2l5bzZ3Z2huMDAyMDMzcGR3YWZhdHNzayJ9.oV-13mVInUUzwSrROzVglQ"
-                mapStyle="light"
-                latitude="{{ latitude}}"
-                longitude="{{ longitude}}"
-                zoomLevel="13"
-                showUserLocation="true"
-                hideCompass="true"
-                hideLogo="true"
-                disableRotation="true"
-                disableTilt="true"
-                disableZoom="true"
-                disableScroll="true"
-                delay="500"
-                (mapReady)="onMapReady($event)"></Mapbox> 
 
-                <GridLayout (tap)="goToMap()"></GridLayout>
-        </GridLayout>
+        <StackLayout class="details-box" orientation="horizontal" (tap)="goToUrl()" *ngIf="selectedRehearsalRoom?.WebsiteUrl">
+            <Label text="sphere" class="pin-icon"></Label>
+            <Label text="{{ selectedRehearsalRoom?.WebsiteUrl}}" style="margin-left: 20"></Label>
+        </StackLayout>
+
+        <StackLayout class="details-box" (tap)="goToMap()">
+            <StackLayout orientation="horizontal" style="margin-bottom: 10; margin-right:15">
+                <Label text="location" class="pin-icon"></Label>
+                <Label text="{{ selectedRehearsalRoom?.AddressText }}" textWrap="True"></Label>
+            </StackLayout>
+            <GridLayout width="350" height="150">
+                <Mapbox accessToken="pk.eyJ1IjoiZXRhYmFrb3YiLCJhIjoiY2l5bzZ3Z2huMDAyMDMzcGR3YWZhdHNzayJ9.oV-13mVInUUzwSrROzVglQ" mapStyle="light"
+                    latitude="{{ latitude}}" longitude="{{ longitude}}" zoomLevel="13" showUserLocation="true" hideCompass="true"
+                    hideLogo="true" disableRotation="true" disableTilt="true" disableZoom="true" disableScroll="true" delay="500"
+                    (mapReady)="onMapReady($event)"></Mapbox>
+
+                    <GridLayout (tap)="goToMap()"></GridLayout>
+            </GridLayout>
+        </StackLayout>
+        <FlexboxLayout class="details-box" *ngIf="selectedRehearsalRoom?.Description">
+            <Label [text]="selectedRehearsalRoom?.Description" textWrap="True" textAlignment="left"></Label>
+        </FlexboxLayout>
     </StackLayout>
-    <FlexboxLayout class="details-box" *ngIf="selectedRehearsalRoom?.Description">
-        <Label [text]="selectedRehearsalRoom?.Description" textWrap="True" textAlignment="left"></Label>
-    </FlexboxLayout>
-</StackLayout>
+</ScrollView>
