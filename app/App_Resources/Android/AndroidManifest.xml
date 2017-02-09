@@ -25,7 +25,6 @@
 		android:icon="@drawable/icon"
 		android:label="@string/app_name"
 		android:theme="@style/AppTheme">
-
 		<activity
 			android:name="com.tns.NativeScriptActivity"
 			android:label="@string/title_activity_kimera"
@@ -40,5 +39,6 @@
 			</intent-filter>
 		</activity>
 		<activity android:name="com.tns.ErrorReportActivity"/>
+		<service android:name="com.mapbox.mapboxsdk.telemetry.TelemetryService" />
 	</application>
 </manifest>
