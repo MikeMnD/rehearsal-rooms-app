@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
 import { RehearsalRoomsService } from "../../shared/rehearsalRooms.service";
 import { RehearsalRoom } from "../../shared/entities/rehearsalRoom";
 import { Observable } from "rxjs/Observable";
@@ -18,57 +18,60 @@ import {
 } from "ui/layouts/flexbox-layout";
 
 var Analytics = require('nativescript-telerik-analytics');
+var mapsModule = require("nativescript-google-maps-sdk");
 
 @Component({
-  moduleId: module.id,  
-  selector: "rehearsalRooms-details",
-  templateUrl: "details.component.html",
-  styleUrls: ["details.component.css"],
+    moduleId: module.id,
+    selector: "rehearsalRooms-details",
+    templateUrl: "details.component.html",
+    styleUrls: ["details.component.css"],
 })
 
-export class DetailsComponent { 
+export class DetailsComponent {
     public id: string;
     public selectedRehearsalRoom: RehearsalRoom;
     public parsedPhoneNumbers: string[] = [];
     private isInitialized: boolean = false;
-    
-    private latitude: number;
-    private longitude: number;
+
+    private latitude: number = 42.6229251;
+    private longitude: number = 23.5828561;
     private title: string;
 
-    public constructor(private router: Router, private route: ActivatedRoute, private rehearsalRoomsSrv: RehearsalRoomsService) {      
-        Analytics.trackEvent('MyCategory.MyEvent');          
+    public constructor(private router: Router, private route: ActivatedRoute, private rehearsalRoomsSrv: RehearsalRoomsService) {
+        Analytics.trackEvent('MyCategory.MyEvent');
         this.route.params.subscribe((params) => {
             this.id = params["id"];
             if (!this.isInitialized) {
                 this.rehearsalRoomsSrv.getById(this.id)
                     .then(
-                    (data) => {                    
+                    (data) => {
                         this.selectedRehearsalRoom = data;
-                        this.parsePhoneNumbers(data);   
+                        this.parsePhoneNumbers(data);
 
                         this.latitude = data.Address.latitude;
                         this.longitude = data.Address.longitude;
                         this.title = data.Name;
-                        
-                        this.isInitialized = true;                 
-                    });                
+
+                        this.isInitialized = true;
+                    });
             }
         });
+
+        setTimeout(() => {}, 1000);
     }
 
     private parsePhoneNumbers(data) {
         if (data != null && data.PhoneNumber != undefined) {
-        data.PhoneNumber.split(",")
-                            .forEach(phone => {
-                                this.parsedPhoneNumbers.push(phone.trim());
-                            })
+            data.PhoneNumber.split(",")
+                .forEach(phone => {
+                    this.parsedPhoneNumbers.push(phone.trim());
+                })
         };
     }
 
     public toTimeString(dateTime: Date): string {
         if (dateTime == null) {
-            return ""; 
+            return "";
         }
         else {
             return ((dateTime.getHours() < 10 ? '0' : '') + dateTime.getHours()) + ":" + ((dateTime.getMinutes() < 10 ? '0' : '') + dateTime.getMinutes());
@@ -84,21 +87,20 @@ export class DetailsComponent {
     }
 
     onMapReady(args) {
-        args.map.addMarkers([
-          {
-            id: 1,
-            lat: this.latitude,
-            lng: this.longitude,  
-            title: this.title,          
-          }
-        ]);
+        var mapView = args.object;
+
+        var marker = new mapsModule.Marker();
+        marker.position = mapsModule.Position.positionFromLatLng(this.latitude, this.longitude);
+        marker.title = this.title;
+
+        mapView.addMarker(marker);
     }
 
     private call(phoneNumber: string) {
         TNSPhone.dial(phoneNumber, true);
     }
 
-    goToMap() {                
+    goToMap() {
         this.router.navigate(["rehearsalRoomMap", this.id]);
     }
 

@@ -38,7 +38,6 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-		<activity android:name="com.tns.ErrorReportActivity"/>
-		<service android:name="com.mapbox.mapboxsdk.telemetry.TelemetryService" />
+		<activity android:name="com.tns.ErrorReportActivity"/>		
 	</application>
 </manifest>

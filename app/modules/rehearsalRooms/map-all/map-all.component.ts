@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {Observable} from "rxjs/Observable";
 import { RehearsalRoomsService } from "../../shared/rehearsalRooms.service";
+var mapsModule = require("nativescript-google-maps-sdk");
 
 @Component({
   moduleId: module.id,
@@ -24,14 +25,19 @@ export class MapAllComponent {
     }
 
     onMapReady(args) {
-        for (let room of this.rehearsalRooms) {
-            args.map.addMarkers([{
-                id: room.Id,
-                lat: room.Address.latitude,
-                lng: room.Address.longitude,
-                title: room.Name,
-                onCalloutTap: () => {this.router.navigate(["rehearsalRoom/", room.Id])},                
-            }])
+        var mapView = args.object;
+
+        for (let room of this.rehearsalRooms) {            
+            var marker = new mapsModule.Marker();
+            marker.position = mapsModule.Position.positionFromLatLng(room.Address.latitude, room.Address.longitude);
+            marker.title = room.Name;
+            
+            marker.userData = { id : room.Id};
+            mapView.addMarker(marker);
         }
+    }
+
+    onMarkerInfoWindowTapped(args) {
+        this.router.navigate(["rehearsalRoom/", args.marker.userData.id]);
     }
 }

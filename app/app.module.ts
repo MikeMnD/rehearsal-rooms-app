@@ -12,8 +12,7 @@ import { AppComponent } from "./app.component";
 
 import { registerElement } from "nativescript-angular/element-registry";
 
-const mapbox = require("nativescript-mapbox");
-registerElement("Mapbox", () => mapbox.Mapbox);
+registerElement("MapView", () => require("nativescript-google-maps-sdk").MapView);
 
 @NgModule({    
     declarations: [AppComponent],

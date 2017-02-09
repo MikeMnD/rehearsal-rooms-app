@@ -25,11 +25,8 @@
                 <Label text="{{ selectedRehearsalRoom?.AddressText }}" textWrap="True"></Label>
             </StackLayout>
             <GridLayout width="350" height="150">
-                <Mapbox accessToken="pk.eyJ1IjoiZXRhYmFrb3YiLCJhIjoiY2l5bzZ3Z2huMDAyMDMzcGR3YWZhdHNzayJ9.oV-13mVInUUzwSrROzVglQ" mapStyle="light"
-                    latitude="{{ latitude}}" longitude="{{ longitude}}" zoomLevel="13" showUserLocation="true" hideCompass="true"
-                    hideLogo="true" disableRotation="true" disableTilt="true" disableZoom="true" disableScroll="true" delay="500"
-                    (mapReady)="onMapReady($event)"></Mapbox>
-
+                <MapView
+                    latitude="{{ latitude}}" longitude="{{ longitude}}" zoom="15" (mapReady)="onMapReady($event)"></MapView>
                     <GridLayout (tap)="goToMap()"></GridLayout>
             </GridLayout>
         </StackLayout>
