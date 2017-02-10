@@ -1,8 +1,17 @@
 {
   "description": "Каталог на всички репетиционни стаи в София.",
-  "license": "SEE LICENSE IN <your-license-filename>",
+  "license": "GPL-3.0",
+  "version": "1.0.1",
+  "author": {
+    "email": "emil.tabakov@gmail.com",
+    "name": "Emil Tabakov"    
+  },
   "readme": "https://raw.githubusercontent.com/etabakov/rehearsal-rooms-app/master/README.md",
-  "repository": "https://github.com/etabakov/rehearsal-rooms-app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/etabakov/rehearsal-rooms-app.git"
+  },
+  "homepage": "https://github.com/etabakov/rehearsal-rooms-app",
   "nativescript": {
     "id": "org.nativescript.rehearsalroomsapp",
     "tns-android": {
